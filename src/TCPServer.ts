@@ -1,7 +1,9 @@
-import { isJSONRPCRequest, JSONRPCServer } from 'json-rpc-2.0';
 import * as net from 'node:net';
 import { ListenOptions } from 'net';
+import { isJSONRPCRequest, JSONRPCServer } from 'json-rpc-2.0';
 import { JSONRPCRequest } from 'json-rpc-2.0/dist/models';
+
+export type Message = JSONRPCRequest;
 
 export class TCPServer {
 	#server: net.Server;
@@ -40,15 +42,15 @@ export class TCPServer {
 		});
 	}
 
-	private async receiveData(data: unknown | JSONRPCRequest): Promise<void> {
+	private async receiveData(data: unknown | Message): Promise<void> {
 		if (!isJSONRPCRequest(data)) {
 			throw new Error(`Only Can receive JSON String`);
 		}
 
-		await this.#jsonRpc.receive(<JSONRPCRequest>data);
+		await this.#jsonRpc.receive(<Message>data);
 	}
 
-	private tryConvertData(data: string): JSONRPCRequest | string {
+	private tryConvertData(data: string): Message | string {
 		try {
 			return JSON.parse(data);
 		} catch (_) {
