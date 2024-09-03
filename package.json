@@ -4,7 +4,7 @@
   "description": "lsp 찍먹",
   "main": "index.ts",
   "scripts": {
-    "start": "ts-node src/index.ts"
+    "start:server": "ts-node src/server/index.ts"
   },
   "repository": {
     "type": "git",
