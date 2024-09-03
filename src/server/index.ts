@@ -1,11 +1,10 @@
 import { TCPServer } from './TCPServer';
+import { JsonRpc } from './json-rpc';
 
 const bootstrap = async () => {
-	const server = TCPServer.init({
+	TCPServer.init(new JsonRpc(), {
 		host: 'localhost',
 		port: 3000,
 	});
-
-	server.addMethod('textDocument/definition');
 };
 void bootstrap();
