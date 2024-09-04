@@ -4,7 +4,7 @@ type MethodNames<T> = {
 export type TextDocumentMethods = MethodNames<TextDocument>;
 
 export class TextDocument {
-	definition(params: any) {
+	helloWorld(params: any) {
 		console.log(
 			`Called textDocument/definition, param: ${JSON.stringify(params)}`,
 		);

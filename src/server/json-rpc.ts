@@ -16,7 +16,7 @@ export class JsonRpc {
 	}
 
 	register() {
-		const methodList = ['textDocument/definition'];
+		const methodList = ['textDocument/helloWorld'];
 
 		methodList.forEach((method) => {
 			const m = method.split('/')[1];
