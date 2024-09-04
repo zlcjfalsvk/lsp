@@ -3,11 +3,11 @@ import { ListenOptions } from 'net';
 
 import { JsonRpc } from './json-rpc';
 
-export class TCPServer {
+export class Tcp {
 	#server: net.Server;
 
-	static init(jsonRpc: JsonRpc, options?: Partial<ListenOptions>): TCPServer {
-		return new TCPServer(jsonRpc, options);
+	static init(jsonRpc: JsonRpc, options?: Partial<ListenOptions>): Tcp {
+		return new Tcp(jsonRpc, options);
 	}
 
 	private constructor(jsonRpc: JsonRpc, options?: Partial<ListenOptions>) {
